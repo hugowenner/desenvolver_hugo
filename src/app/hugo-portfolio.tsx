@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Code, Smartphone, Database, Rocket, CheckCircle2, MessageCircle, Mail, Phone, ExternalLink, Github } from 'lucide-react';
+import { Code, Smartphone, Database, Rocket, CheckCircle2, MessageCircle, Mail, Phone } from 'lucide-react';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('pacotes');
@@ -26,8 +26,6 @@ export default function Home() {
     { nome: 'TypeScript', icon: <Code className="w-6 h-6" /> },
     { nome: 'Tailwind CSS', icon: <Smartphone className="w-6 h-6" /> },
     { nome: 'Node.js & APIs', icon: <Database className="w-6 h-6" /> },
-    { nome: 'PostgreSQL', icon: <Database className="w-6 h-6" /> },
-    { nome: 'UI/UX Design', icon: <Smartphone className="w-6 h-6" /> },
   ];
 
   const pacotes = [
@@ -46,7 +44,6 @@ export default function Home() {
         'Otimização para velocidade'
       ],
       preco: 'R$ 500',
-      aPartirDe: true,
       popular: false
     },
     {
@@ -65,7 +62,6 @@ export default function Home() {
         '30 dias de suporte gratuito'
       ],
       preco: 'R$ 1.000',
-      aPartirDe: true,
       popular: false
     },
     {
@@ -85,7 +81,6 @@ export default function Home() {
         '60 dias de suporte gratuito'
       ],
       preco: 'R$ 2.500',
-      aPartirDe: true,
       popular: true
     },
     {
@@ -105,7 +100,6 @@ export default function Home() {
         '90 dias de suporte técnico'
       ],
       preco: 'Sob consulta',
-      aPartirDe: false,
       popular: false
     }
   ];
@@ -147,56 +141,6 @@ export default function Home() {
       preco: 'R$ 300',
       icon: <Smartphone className="w-5 h-5" />
     }
-  ];
-
-  // Projetos - Adicione suas imagens depois
-  const projetos = [
-    {
-      id: 1,
-      titulo: 'Loja Furdunço',
-      descricao: 'Lading Page completa com painel administrativo e banco de dados',
-      imagem: '/furduncosite.jpeg', // Adicione o caminho da imagem aqui
-      tags: ['React', 'Node.js', 'phpMyAdmin', 'MySQL'],
-      link: 'https://furdunco.com/',
-      github: '#'
-    },
-    {
-      id: 2,
-      titulo: 'No Fear',
-      descricao: 'Comunidade de jogos online com sistema de membros',
-      imagem: '/nofear.jpeg', // Adicione o caminho da imagem aqui
-      tags: ['Next.js', 'TypeScript', 'Tailwind'],
-      link: 'https://nofear.netlify.app/',
-      github: '#'
-    },
-    {
-      id: 3,
-      titulo: 'Página Landing Page Profissional com sistema de cadastro e finaiceiro',
-      descricao: 'Página de informações para igreja com sistema de membros e financeiro',
-      imagem: '/igreja.jpeg', // Adicione o caminho da imagem aqui
-      tags: ['HTML', 'CSS', 'JavaScript'],
-      link: '#',
-      github: '#'
-    },
-    {
-      id: 4,
-      titulo: 'Hugo Wenner Currículo',
-      descricao: 'Currículo online interativo para desenvolvedor web',
-      imagem: '/hugowenner.jpeg', // Adicione o caminho da imagem aqui
-      tags: ['React Native', 'Firebase', 'API'],
-      link: 'https://hugowenner.netlify.app/',
-      github: '#'
-    },
-    {
-      id: 5,
-      titulo: 'WEB site Corporativo',
-      descricao: 'Divulgação de empresa de desenvolvimento web',
-      imagem: '/devsite.jpeg', // Adicione o caminho da imagem aqui
-      tags: ['Next.js', 'MDX', 'Tailwind'],
-      link: '#',
-      github: '#'
-    },
-    
   ];
 
   return (
@@ -311,12 +255,9 @@ export default function Home() {
       <main className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-16 h-14 bg-white shadow-lg rounded-xl">
+            <TabsList className="grid w-full grid-cols-2 mb-16 h-14 bg-white shadow-lg rounded-xl">
               <TabsTrigger value="pacotes" className="text-lg font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-indigo-700 data-[state=active]:text-white rounded-lg">
                 💼 Pacotes de Serviços
-              </TabsTrigger>
-              <TabsTrigger value="projetos" className="text-lg font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-indigo-700 data-[state=active]:text-white rounded-lg">
-                📸 Projetos
               </TabsTrigger>
               <TabsTrigger value="extras" className="text-lg font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-indigo-700 data-[state=active]:text-white rounded-lg">
                 ⭐ Serviços Extras
@@ -378,7 +319,6 @@ export default function Home() {
                       <div className="space-y-4">
                         <div className="text-center">
                           <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
-                            {pacote.aPartirDe ? 'A partir de ' : ''}
                             {pacote.preco}
                           </span>
                         </div>
@@ -394,87 +334,6 @@ export default function Home() {
                     </CardContent>
                   </Card>
                 ))}
-              </div>
-            </TabsContent>
-
-            {/* Seção de Projetos */}
-            <TabsContent value="projetos" className="space-y-12">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                  Meus Projetos
-                </h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  Confira alguns dos projetos que desenvolvi. Adicione suas imagens nos campos abaixo.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projetos.map((projeto) => (
-                  <Card key={projeto.id} className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-gray-200">
-                    <div className="h-48 bg-gradient-to-r from-blue-100 to-indigo-100 flex items-center justify-center">
-                      {projeto.imagem ? (
-                        <img 
-                          src={projeto.imagem} 
-                          alt={projeto.titulo} 
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="text-center p-4">
-                          <div className="text-gray-400 mb-2">
-                            <Smartphone className="w-12 h-12 mx-auto" />
-                          </div>
-                          <p className="text-gray-500 font-medium">Adicione sua imagem aqui</p>
-                          <p className="text-sm text-gray-400 mt-1">Substitua o campo "imagem" no código</p>
-                        </div>
-                      )}
-                    </div>
-                    
-                    <CardHeader>
-                      <CardTitle className="text-xl">{projeto.titulo}</CardTitle>
-                      <CardDescription className="text-sm leading-relaxed">
-                        {projeto.descricao}
-                      </CardDescription>
-                    </CardHeader>
-                    
-                    <CardContent className="pt-0">
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {projeto.tags.map((tag, index) => (
-                          <Badge key={index} variant="secondary" className="text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                      
-                      <div className="flex gap-3">
-                        <Button 
-                          onClick={() => window.open(projeto.link, '_blank')}
-                          className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Ver Projeto
-                        </Button>
-                        
-                        <Button 
-                          onClick={() => window.open(projeto.github, '_blank')}
-                          variant="outline"
-                          className="p-3"
-                        >
-                          <Github className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-              
-              <div className="text-center mt-12">
-                <Button 
-                  onClick={() => handleWhatsAppClick()}
-                  className="bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white font-semibold"
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Converse comigo!
-                </Button>
               </div>
             </TabsContent>
             
